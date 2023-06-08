@@ -1,6 +1,20 @@
+// import React, { useState } from "react";
 import Head from "next/head";
 
+// import { Accordion } from "@/challenges/challengeOne/1.Accordion/Accordion";
+// import { Dropdown } from "@/challenges/challengeOne/2.Dropdown/Dropdown";
+// import { Table } from "@/challenges/challengeOne/3.Table/Table";
+// import { Form } from "@/challenges/challengeOne/4.Form/Form";
+// import { Modal } from "@/challenges/challengeOne/5.Modal/Modal";
+// import { IntegrationComponent } from "@/challenges/challengeTwo/IntegrationComponent/IntegrationComponent";
+
 export default function Home() {
+  // const [isOpen, setIsOpen] = useState(true);
+
+  // const handleModalClose = () => {
+  //   setIsOpen(false);
+  // };
+
   return (
     <>
       <Head>
@@ -10,11 +24,60 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="flex w-full flex-col">
-          <p>
-            Get started by editing&nbsp;
-            <code>pages/index.tsx</code>
-          </p>
+        <div className="mx-auto flex h-full w-full flex-col items-center gap-3 p-40">
+          <h1 className="text-4xl font-bold">Testing Workshop</h1>
+          {/* <Accordion title="Accordion title">
+            <p>Accordion content</p>
+          </Accordion>
+
+          <Dropdown
+            options={["Option 1", "Option 2", "Option 3"]}
+            label="Label"
+            id="id"
+          />
+
+          <Modal
+            isOpen={isOpen}
+            onClose={handleModalClose}
+            headerText="Modal header"
+            onConfirm={() => {}}
+          >
+            <p>Modal content</p>
+          </Modal>
+
+          <Form
+            fields={[
+              {
+                label: "Name",
+                type: "text",
+                name: "name",
+                placeholder: "Name",
+                value: "",
+                id: "name",
+              },
+              {
+                label: "Email",
+                type: "email",
+                name: "email",
+                placeholder: "Email",
+                value: "",
+                id: "email",
+              },
+            ]}
+            onSubmit={(values) => console.log(values)}
+          />
+
+          <Table
+            columns={[
+              { property: "name", label: "Name" },
+              { property: "email", label: "Email" },
+            ]}
+            data={[
+              { id: 1, name: "John Doe", email: "john.doe@mail.com" },
+              { id: 2, name: "Jane Doe", email: "jane.down@mail.com" },
+            ]}
+          /> */}
+          {/* <IntegrationComponent /> */}
         </div>
       </main>
     </>
