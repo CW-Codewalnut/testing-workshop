@@ -1,4 +1,6 @@
+/* eslint-disable no-console */
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 interface WeatherData {
   temperature: string;
@@ -9,19 +11,23 @@ export function WeatherShowcase() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
   useEffect(() => {
-    fetch(
-      "http://api.weatherapi.com/v1/current.json?key=d42513d17426425f8ca192746230806&q=London&aqi=no",
-    )
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchWeatherData = async () => {
+      try {
+        const response = await axios.get(
+          "http://api.weatherapi.com/v1/current.json?key=d42513d17426425f8ca192746230806&q=London&aqi=no",
+        );
+        const { data } = response;
+
         setWeatherData({
           temperature: data.temperature,
           weather: data.weather,
         });
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching weather data: ", error);
-      });
+      }
+    };
+
+    fetchWeatherData();
   }, []);
 
   return (
