@@ -4,7 +4,6 @@ import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import { IntegrationComponent } from "./IntegrationComponent";
 
-// Mocked data for integration testing
 jest.mock("axios");
 const mockWeatherData = {
   temperature: "18",
@@ -32,49 +31,58 @@ describe("IntegrationComponent", () => {
     expect(screen.getByText("Form Modal")).toBeInTheDocument();
   });
 
-  it("closes the modal when clicking on the cross icon", () => {
-    render(<IntegrationComponent />);
+  it("closes the modal when clicking on the cross icon", async () => {
+    renderComponent();
     const openFormButton = screen.getByText("Open Form");
-    userEvent.click(openFormButton);
+    await userEvent.click(openFormButton);
 
     const crossIcon = screen.getByTestId("modal-close-icon");
-    userEvent.click(crossIcon);
+    await userEvent.click(crossIcon);
 
     expect(screen.queryByText("Form Modal")).not.toBeInTheDocument();
   });
 
-  //   it("submits the form and displays toast message", async () => {
-  //     render(<IntegrationComponent />);
-  //     const openFormButton = screen.getByText("Open Form");
-  //     userEvent.click(openFormButton);
+  it("render form field", async () => {
+    renderComponent();
+    const openFormButton = screen.getByText("Open Form");
+    await userEvent.click(openFormButton);
+    expect(screen.getByLabelText("Name")).toBeInTheDocument();
+    expect(screen.getByLabelText("Email")).toBeInTheDocument();
+  });
 
-  //     const nameInput = screen.getByLabelText("Name");
-  //     const emailInput = screen.getByLabelText("Email");
-  //     const submitButton = screen.getByRole("button", { name: "Submit" });
+  it("updates name field values on input change", async () => {
+    renderComponent();
+    const openFormButton = screen.getByText("Open Form");
+    await userEvent.click(openFormButton);
+    const inputElement = screen.getByLabelText("Name");
+    await userEvent.type(inputElement, "Lovepreet");
+    expect(inputElement).toHaveValue("Lovepreet");
+  });
 
-  //     userEvent.type(nameInput, "John Doe");
-  //     userEvent.type(emailInput, "john.doe@example.com");
-  //     userEvent.click(submitButton);
+  it("updates email field values on input change", async () => {
+    renderComponent();
+    const openFormButton = screen.getByText("Open Form");
+    await userEvent.click(openFormButton);
+    const inputElement = screen.getByLabelText("Email");
+    await userEvent.type(inputElement, "lovepreet@gmail.com");
+    expect(inputElement).toHaveValue("lovepreet@gmail.com");
+  });
 
-  //     await waitFor(() => {
-  //       expect(
-  //         screen.getByText(
-  //           "Hello John Doe, your email john.doe@example.com has been submitted!",
-  //         ),
-  //       ).toBeInTheDocument();
-  //     });
-  //   });
+  it("display success message once we submit the form", async () => {
+    renderComponent();
+    const openFormButton = screen.getByText("Open Form");
+    await userEvent.click(openFormButton);
+    const nameInput = screen.getByLabelText("Name");
+    await userEvent.type(nameInput, "Lovepreet");
+    const emailInput = screen.getByLabelText("Email");
+    await userEvent.type(emailInput, "lovepreet@gmail.com");
 
-  //   it("displays the weather data correctly", async () => {
-  //     render(<IntegrationComponent />);
-  //     await waitFor(() => {
-  //       expect(screen.getByText(/Temperature: 18/i)).toBeInTheDocument();
-  //       expect(screen.getByText(/Weather: Cold/i)).toBeInTheDocument();
-  //     });
-  //   });
+    const button = screen.getByText("Submit");
+    await userEvent.click(button);
 
-  //   it("renders the WeatherShowcase component", () => {
-  //     render(<IntegrationComponent />);
-  //     expect(screen.getByTestId("weather-showcase")).toBeInTheDocument();
-  //   });
+    await screen.findByText(
+      "Hello Lovepreet, your email lovepreet@gmail.com has been submitted!",
+    );
+    expect(screen.queryByText("Form Modal")).not.toBeInTheDocument();
+  });
 });
