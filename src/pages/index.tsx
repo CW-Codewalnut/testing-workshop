@@ -26,7 +26,7 @@ export default function Home() {
       </Head>
       <main>
         <div className="mx-auto flex h-full w-full flex-col items-center gap-3 p-40">
-          <h1 className="text-4xl font-bold">Testing Workshop</h1>
+          {/* <h1 className="text-4xl font-bold">Testing Workshop</h1>
           <Accordion title="Accordion title">
             <p>Accordion content</p>
           </Accordion>
@@ -77,8 +77,8 @@ export default function Home() {
               { id: 1, name: "John Doe", email: "john.doe@mail.com" },
               { id: 2, name: "Jane Doe", email: "jane.down@mail.com" },
             ]}
-          />
-          {/* <IntegrationComponent /> */}
+          /> */}
+          <IntegrationComponent />
         </div>
       </main>
     </>
