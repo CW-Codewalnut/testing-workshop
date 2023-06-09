@@ -1,12 +1,11 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
-
 // import { Accordion } from "@/challenges/challengeOne/1.Accordion/Accordion";
 // import { Dropdown } from "@/challenges/challengeOne/2.Dropdown/Dropdown";
 // import { Table } from "@/challenges/challengeOne/3.Table/Table";
 // import { Form } from "@/challenges/challengeOne/4.Form/Form";
 // import { Modal } from "@/challenges/challengeOne/5.Modal/Modal";
-// import { IntegrationComponent } from "@/challenges/challengeTwo/IntegrationComponent/IntegrationComponent";
+import { IntegrationComponent } from "@/challenges/challengeTwo/IntegrationComponent/IntegrationComponent";
 
 export default function Home() {
   // const [isOpen, setIsOpen] = useState(true);
@@ -77,7 +76,7 @@ export default function Home() {
               { id: 2, name: "Jane Doe", email: "jane.down@mail.com" },
             ]}
           /> */}
-          {/* <IntegrationComponent /> */}
+          <IntegrationComponent />
         </div>
       </main>
     </>
