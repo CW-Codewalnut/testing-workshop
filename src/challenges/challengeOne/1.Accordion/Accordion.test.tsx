@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { Accordion, AccordionProps } from "./Accordion";
 
 describe("Accordion", () => {
-  const renderComponent = (additionalProps?: Partial<AccordionProps>) => {
+  const renderComponent = (additionalProps?: any) => {
     const defaultProps: Partial<AccordionProps> = {
       children: "Accordion Content",
       title: "Accordion Title",

@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { Dropdown, DropdownProps } from "./Dropdown";
 
 describe("Dropdown", () => {
-  const renderComponent = (additionalProps?: Partial<DropdownProps>) => {
+  const renderComponent = (additionalProps?: any) => {
     const defaultProps: Partial<DropdownProps> = {
       options: ["Option 1", "Option 2", "Option 3"],
       label: "Dropdown Label",

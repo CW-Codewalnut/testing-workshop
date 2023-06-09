@@ -13,7 +13,7 @@ const TableRows = [
   { id: 2, name: "Jane Smith", age: 25, email: "janesmith@example.com" },
 ];
 describe("Table", () => {
-  const renderComponent = (additionalProps?: Partial<TableProps>) => {
+  const renderComponent = (additionalProps?: any) => {
     const defaultProps: Partial<TableProps> = {
       columns: TableHeader,
       data: TableRows,
