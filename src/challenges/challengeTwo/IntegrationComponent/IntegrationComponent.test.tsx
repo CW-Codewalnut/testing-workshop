@@ -11,16 +11,21 @@ describe("IntegrationComponent", () => {
     weather: "Sunny",
   };
 
-  it("displays the weather data after successful API call", async () => {
+  const renderComponent = () => render(<IntegrationComponent />);
+
+  it("displays a loading message when the API call is in progress", () => {
+    renderComponent();
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+  });
+
+  it("displays the weather data after succesfully receiving the data from the API", async () => {
     (axios.get as jest.MockedFunction<typeof axios.get>).mockResolvedValueOnce({
       data: mockWeatherData,
     });
 
-    render(<IntegrationComponent />);
-
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    renderComponent();
 
     expect(await screen.findByText(`Temperature: 25`)).toBeInTheDocument();
-    expect(screen.getByText(`Weather: Sunny`)).toBeInTheDocument();
+    expect(await screen.findByText(`Weather: Sunny`)).toBeInTheDocument();
   });
 });
