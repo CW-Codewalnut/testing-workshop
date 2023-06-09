@@ -17,10 +17,9 @@ export function WeatherShowcase() {
           "http://api.weatherapi.com/v1/current.json?key=d42513d17426425f8ca192746230806&q=London&aqi=no",
         );
         const { data } = response;
-
         setWeatherData({
-          temperature: data.temperature,
-          weather: data.weather,
+          temperature: data.current.temp_c,
+          weather: data.current.condition.text,
         });
       } catch (error) {
         console.error("Error fetching weather data: ", error);
