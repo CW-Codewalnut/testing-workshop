@@ -19,7 +19,7 @@ describe("Dropdown", () => {
     expect(screen.getByLabelText("DropDown")).toBeInTheDocument();
   });
 
-  it("displays options when clicked", async () => {
+  it("display all options when clicked", async () => {
     renderComponent();
 
     await userEvent.click(screen.getByRole("combobox", { name: "DropDown" }));
@@ -33,11 +33,8 @@ describe("Dropdown", () => {
     renderComponent();
 
     const dropdownButton = screen.getByRole("combobox", { name: "DropDown" });
-
-    await userEvent.click(screen.getByRole("combobox", { name: "DropDown" }));
-
+    await userEvent.click(dropdownButton);
     await userEvent.click(screen.getByText("Option 2"));
-
     expect(dropdownButton).toHaveTextContent("Option 2");
   });
 });

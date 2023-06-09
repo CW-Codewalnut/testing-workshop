@@ -42,7 +42,7 @@ describe("Form", () => {
     expect(emailLabel).toBeInTheDocument();
   });
 
-  it("calls onSubmit with correct values when submitted", async () => {
+  it("calls onSubmit with correct values on submit", async () => {
     renderComponent(testFields, onSubmitMock);
 
     const nameInput = screen.getByLabelText("Name");

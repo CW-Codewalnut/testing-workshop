@@ -1,0 +1,60 @@
+// Rupesh Baghmar
+import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { WorkshopButton, WorkshopButtonProps } from "./WorkshopButton";
+
+describe("WorkshopButton", () => {
+  const mockOnClick = jest.fn();
+
+  const renderComponent = (additionalProps?: Partial<WorkshopButtonProps>) => {
+    const defaultProps: WorkshopButtonProps = {
+      text: "Click me",
+      onClick: mockOnClick,
+    };
+
+    render(<WorkshopButton {...defaultProps} {...additionalProps} />);
+  };
+
+  it("renders button with text and default variant", () => {
+    renderComponent();
+
+    const button = screen.getByRole("button", { name: "Click me" });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass("bg-blue-500 hover:bg-blue-700 text-white");
+  });
+
+  it("renders button with specified variant", () => {
+    renderComponent({ variant: "secondary" });
+
+    const button = screen.getByRole("button", { name: "Click me" });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass("bg-gray-500 hover:bg-gray-700 text-white");
+  });
+
+  it("triggers onClick event when clicked", async () => {
+    renderComponent();
+
+    const button = screen.getByRole("button", { name: "Click me" });
+
+    userEvent.click(button);
+    await waitFor(() => {
+      expect(mockOnClick).toHaveBeenCalled();
+    });
+  });
+
+  it("renders button with leading and trailing icons", () => {
+    const leadingIcon = <span>👈</span>;
+    const trailingIcon = <span>👉</span>;
+    renderComponent({
+      leadingIcon,
+      trailingIcon,
+    });
+
+    const button = screen.getByRole("button", { name: "👈 Click me 👉" });
+
+    expect(button).toBeInTheDocument();
+  });
+});

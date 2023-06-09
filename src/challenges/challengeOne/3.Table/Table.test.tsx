@@ -26,7 +26,7 @@ describe("Table", () => {
     expect(screen.getByText("Email")).toBeInTheDocument();
   });
 
-  it("displays data correctly", () => {
+  it("display all data correctly", () => {
     renderComponent(testColumns, testData);
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText("Jane Doe")).toBeInTheDocument();
