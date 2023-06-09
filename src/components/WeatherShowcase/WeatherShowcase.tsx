@@ -1,11 +1,10 @@
-/* eslint-disable no-console */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-interface WeatherData {
+type WeatherData = {
   temperature: string;
   weather: string;
-}
+};
 
 export function WeatherShowcase() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -23,6 +22,7 @@ export function WeatherShowcase() {
           weather: data.weather,
         });
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error("Error fetching weather data: ", error);
       }
     };
@@ -35,8 +35,12 @@ export function WeatherShowcase() {
       {weatherData ? (
         <>
           <h2 className="text-xl font-bold">London Weather</h2>
-          <p className="mt-2">{`Temperature: ${weatherData.temperature}`}</p>
-          <p className="mt-1">{`Weather: ${weatherData.weather}`}</p>
+          <p className="mt-2">{`Temperature: ${
+            weatherData.temperature || "Unknown"
+          }`}</p>
+          <p className="mt-1">{`Weather: ${
+            weatherData.weather || "Unknown"
+          } `}</p>
         </>
       ) : (
         <p>Loading...</p>

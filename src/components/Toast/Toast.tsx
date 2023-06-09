@@ -4,9 +4,10 @@ import React, { useEffect, useState } from "react";
 interface ToastProps {
   show: boolean;
   message: string;
+  afterShow: () => void;
 }
 
-export function Toast({ show, message }: ToastProps) {
+export function Toast({ show, message, afterShow }: ToastProps) {
   const [isVisible, setIsVisible] = useState(show);
 
   useEffect(() => {
@@ -15,13 +16,16 @@ export function Toast({ show, message }: ToastProps) {
 
   useEffect(() => {
     if (isVisible) {
-      const timer = setTimeout(() => setIsVisible(false), 2000);
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        afterShow();
+      }, 4000);
       return () => clearTimeout(timer);
     }
-  }, [isVisible]);
+  }, [isVisible, afterShow]);
 
   return isVisible ? (
-    <div className="fixed bottom-4 right-4 rounded bg-green-500 py-2 px-4 text-white">
+    <div className="fixed top-4 rounded bg-green-500 py-2 px-4 text-white">
       {message}
     </div>
   ) : null;
