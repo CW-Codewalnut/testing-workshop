@@ -49,11 +49,7 @@ export function IntegrationComponent() {
       >
         <Form fields={fields} onSubmit={handleFormSubmit} />
       </Modal>
-      <Toast
-        show={!!toastMessage}
-        message={toastMessage}
-        afterShow={() => setToastMessage("")}
-      />
+      <Toast show={!!toastMessage} message={toastMessage} />
       <WeatherShowcase />
     </div>
   );
