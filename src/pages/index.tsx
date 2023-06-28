@@ -1,19 +1,20 @@
 // import React, { useState } from "react";
 import Head from "next/head";
 
-// import { Accordion } from "@/challenges/challengeOne/1.Accordion/Accordion";
-// import { Dropdown } from "@/challenges/challengeOne/2.Dropdown/Dropdown";
-// import { Table } from "@/challenges/challengeOne/3.Table/Table";
-// import { Form } from "@/challenges/challengeOne/4.Form/Form";
-// import { Modal } from "@/challenges/challengeOne/5.Modal/Modal";
-// import { IntegrationComponent } from "@/challenges/challengeTwo/IntegrationComponent/IntegrationComponent";
+import { Accordion } from "@/challenges/challengeOne/1.Accordion/Accordion";
+import { Dropdown } from "@/challenges/challengeOne/2.Dropdown/Dropdown";
+import { Table } from "@/challenges/challengeOne/3.Table/Table";
+import { Form } from "@/challenges/challengeOne/4.Form/Form";
+import { Modal } from "@/challenges/challengeOne/5.Modal/Modal";
+import { IntegrationComponent } from "@/challenges/challengeTwo/IntegrationComponent/IntegrationComponent";
+import { useState } from "react";
 
 export default function Home() {
-  // const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
 
-  // const handleModalClose = () => {
-  //   setIsOpen(false);
-  // };
+  const handleModalClose = () => {
+    setIsOpen(false);
+  };
 
   return (
     <>
@@ -25,8 +26,8 @@ export default function Home() {
       </Head>
       <main>
         <div className="mx-auto flex h-full w-full flex-col items-center gap-3 p-40">
-          <h1 className="text-4xl font-bold">Testing Workshop</h1>
-          {/* <Accordion title="Accordion title">
+          {/* <h1 className="text-4xl font-bold">Testing Workshop</h1>
+          <Accordion title="Accordion title">
             <p>Accordion content</p>
           </Accordion>
 
@@ -77,7 +78,7 @@ export default function Home() {
               { id: 2, name: "Jane Doe", email: "jane.down@mail.com" },
             ]}
           /> */}
-          {/* <IntegrationComponent /> */}
+          <IntegrationComponent />
         </div>
       </main>
     </>
