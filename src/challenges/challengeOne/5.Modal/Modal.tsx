@@ -22,7 +22,11 @@ export function Modal({
       <div className="modal w-[300px] rounded-md bg-white p-6">
         <div className="flex items-center justify-between pb-6">
           <h2 className="text-lg font-semibold">{headerText}</h2>
-          <button onClick={onClose} type="button">
+          <button
+            onClick={onClose}
+            type="button"
+            data-testid="modal-close-icon"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
